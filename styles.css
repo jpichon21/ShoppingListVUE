@@ -1,0 +1,14 @@
+/********COLORS*********/
+/*******BASIC STYLES*******/
+body {
+  font-family: sans-serif; }
+
+ul {
+  list-style-type: none; }
+  ul li {
+    cursor: pointer;
+    margin: 0px 12px; }
+
+.bought {
+  text-decoration: line-through;
+  color: #1a4638; }

@@ -1,0 +1,19 @@
+{
+  "name": "tutovue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lite-server": "^2.5.4"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
+  }
+}

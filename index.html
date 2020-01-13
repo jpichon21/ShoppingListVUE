@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="js/vue.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Ma liste de courses</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    </head>
+    <body>
+    <div id="app">
+       <h2>{{title}}</h2>
+       <form  v-on:submit.prevent="addProduct($event)">
+           <input type="text" placeholder="courses à faire" v-model="product">
+           <button type="submit">ajouter</button>
+       </form>
+
+       <ul>
+           <!--appliquer la classe si le produit est acheté-->
+           <li 
+           v-bind:class="{bought: product.bought}"
+           v-on:click="product.bought = !product.bought"
+           v-for="product in products">
+
+           <!--Affichage conditionnel else/if-->
+           <span v-if="!product.isInEditMode">
+             <i class="fa fa-edit" v-on:click="switchMode(product)"></i>
+             {{product.description}}
+             <i class="fa fa-trash-o" v-on:click="deleteProduct(product)"></i>
+           </span>
+
+           <span v-else>
+            <i class="fa fa-thumbs-o-up"></i>
+            <input type="text" v-model="product.description" v-on:keyup.enter="switchMode(product)">
+          </span>
+          <!---->
+
+        </li>
+       </ul>
+
+    </div>
+
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                title: 'Ma liste de courses',
+                product: null,
+                //stocker la data
+                products: []
+            },
+            methods: {
+                addProduct: function(){
+                    //récupérer la data
+                    this.products.push({id: Date.now(), description: this.product, bought: false, isInEditMode: false});
+                    this.product = null;
+                },
+                switchMode: function(product){
+                    //changer la valeur de isInEditMode au clic sur le produit
+                    product.isInEditMode = !product.isInEditMode;
+                    console.log(product);
+                },
+                deleteProduct: function(product){
+                    this.products = this.products.filter(function(p) {
+                        return p.id !== product.id;
+                    });
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

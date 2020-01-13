@@ -1,0 +1,31 @@
+
+/********COLORS*********/
+$color-green: #1a3936;
+$color-lightgreen: #1a4638;
+$color-red: #7f0625;
+$color-orange: #dd981d;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-grey: rgb(125, 125, 125);
+$color-midgrey: #707070;
+$color-lightgrey: #f1f2f2;
+
+
+/*******BASIC STYLES*******/
+body{
+    font-family: sans-serif;
+}
+
+ul{
+    list-style-type: none;
+    li{
+        cursor: pointer;
+        margin: 0px 12px;
+    }
+}
+
+.bought {
+    text-decoration: line-through;
+    color: $color-lightgreen;
+}
+
